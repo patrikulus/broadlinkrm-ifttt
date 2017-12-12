@@ -2,6 +2,14 @@
 
 This is a simple server that allows you to connect your Broadlink (tested with the RM mini 3) to your IFTTT account.
 
+This fork includes option to specify Broadlink device parameters in env.config file. It becomes handy when for some reason autodiscovery doesn't work. Folowing values can be included in config:
+
+IP - device's IP address
+MAC - device's MAC address
+PORT - server's port (default 1880)
+SECRET - if you want to declare one secret for all commands
+PRO - if your device type is pro version, true or false value (default false)
+
 # Setup
 - Get a IFTTT account and enable the Maker Webhooks: https://ifttt.com/maker_webhooks
 - Download and install ngrok: https://ngrok.com/
