@@ -1,5 +1,10 @@
 "use strict";
+
+require('dotenv').config();
 const PORT = process.env.PORT || 1880;
+const MAC = process.env.MAC;
+const IP = process.env.IP;
+const SECRET = process.env.SECRET;
 
 /* Modules */
 const express = require('express');
@@ -21,6 +26,20 @@ function sendData(device = false, hexData = false) {
 
     const hexDataBuffer = new Buffer(hexData, 'hex');
     device.sendData(hexDataBuffer);
+}
+
+function setDefaultCommandValues() {
+    for (let i = 0; i < commands.length; i++) {
+        if (!commands[i].mac && MAC) {
+            commands[i].mac = MAC;
+        }
+        if (!commands[i].ip && IP) {
+            commands[i].ip = IP;
+        }
+        if (!commands[i].secret && SECRET) {
+            commands[i].secret = SECRET;
+        }
+    }
 }
 
 /* Server */
@@ -72,6 +91,8 @@ app.post('/command/:name', function(req, res) {
         res.sendStatus(400);
     }
 });
+
+setDefaultCommandValues();
 
 app.listen(PORT);
 console.log('Server running, go to http://localhost:' + PORT);

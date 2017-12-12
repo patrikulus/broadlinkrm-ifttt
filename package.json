@@ -1,17 +1,18 @@
 {
     "name": "BroadLinkServer",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "server.js",
     "author": "jor3l",
     "license": "ISC",
     "dependencies": {
-        "express": "latest",
-        "lodash": "latest",
-        "cors": "latest",
         "body-parser": "latest",
-        "request": "latest",
+        "broadlinkjs-rm": "git+http://github.com/Qata/broadlinkjs-rm.git",
+        "cors": "latest",
+        "dotenv": "^4.0.0",
+        "express": "latest",
         "helmet": "latest",
-        "broadlinkjs-rm": "latest",
+        "lodash": "latest",
+        "request": "latest",
         "uuid": "latest"
     }
 }
